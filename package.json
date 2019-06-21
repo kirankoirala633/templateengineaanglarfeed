@@ -1,0 +1,15 @@
+{
+  "name": "angularjs-helloworld",
+  "version": "1.0.0",
+  "description": "angularjs-helloworld ====================",
+  "main": "index.js",
+  "scripts": {
+    "mkdr": "mkdir -p dist",
+    "move_lib": "cp -rp $PWD/js/ $PWD/dist/js",
+    "move_scr": "cp -rp $PWD/todo-list/js/ $PWD/dist/js",
+    "move_css": "cp -rp $PWD/todo-list/css/ $PWD/dist/css",
+    "build": "npm run mkdr && npm run move_lib && npm run move_scr && npm run move_css"
+  },
+  "author": "",
+  "license": "ISC"
+}
