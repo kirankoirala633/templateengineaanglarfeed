@@ -1,6 +1,8 @@
 (function(w) {
-  function TodoController($scope, $compile, $sce) {
-    $scope.globalObj = JSON.stringify(window.ExectualsObj || {}, null, 4)
+  function TodoController($scope, $compile, $sce, $window) {
+    $scope.globalObj = function(){
+      return JSON.stringify(($window.ExectualsObj || {}), null, 4)
+    }
     $scope.todos = [
       { text: "learn angular", done: true },
       { text: "build an angular app", done: false }
@@ -32,6 +34,7 @@
     "$scope",
     "$compile",
     "$sce",
+    "$window",
     TodoController
   ]);
   ngModule.directive("todoDir", function() {
@@ -39,7 +42,7 @@
     directive.restrict = "E"; /* restrict this directive to elements */
     directive.template = `
             <pre>
-                {{globalObj}}
+                {{globalObj()}}
             </pre>
 
             <h2>Todo</h2>
