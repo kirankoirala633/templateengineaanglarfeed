@@ -1,5 +1,6 @@
 (function(w) {
   function TodoController($scope, $compile, $sce) {
+    $scope.globalObj = JSON.stringify(window.ExectualsObj || {}, null, 4)
     $scope.todos = [
       { text: "learn angular", done: true },
       { text: "build an angular app", done: false }
@@ -36,7 +37,12 @@
   ngModule.directive("todoDir", function() {
     var directive = {};
     directive.restrict = "E"; /* restrict this directive to elements */
-    directive.template = `<h2>Todo</h2>
+    directive.template = `
+            <pre>
+                {{globalObj}}
+            </pre>
+
+            <h2>Todo</h2>
 			  <div ng-controller="TodoController">
 				<span>{{remaining()}} of {{todos.length}} remaining</span>
 				[ <a href="" ng-click="archive()">archive</a> ]
